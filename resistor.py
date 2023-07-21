@@ -122,7 +122,6 @@ if __name__ == "__main__":
     resistor = Resistor()
     
     tolerances = [10, 5, 2, 1]
-    #tolerances = [10]
 
     for t in tolerances:
         for r in range(100, 1000):

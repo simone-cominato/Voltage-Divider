@@ -1,7 +1,5 @@
 from resistor import Resistor
 
-import numpy as np
-
 class Resistor_Divider():
     
     @property
@@ -62,7 +60,6 @@ class Resistor_Divider():
 
         while abs(self.output_voltage - actual_vout) > 0.01 and iterations < 100:
             r_down = (self.output_voltage / self.input_voltage) * rs
-            #print(f"r_down: {r_down} = ({self.output_voltage} / {self.input_voltage}) * {rs}")
             r_down_std = Resistor(value = r_down,
                                 tolerance = self.resistors_tolerance).get_std_value()
             r_up = rs - r_down_std
@@ -70,13 +67,8 @@ class Resistor_Divider():
                                 tolerance = self.resistors_tolerance).get_std_value()
             rs = r_up_std + r_down_std
             actual_vout = self.input_voltage * (r_down_std / rs)
-            #print(f"actual_vout: {actual_vout} = {self.input_voltage} * ({r_down_std} / {rs})")
 
             iterations += 1
-            """ print(f"iter: {iterations}")
-            print(f"\tr_up_std: {r_up_std}")
-            print(f"\tr_down_std: {r_down_std}")
-            print(f"\tactual_vout: {actual_vout}") """
         
             self.__r_up = r_up_std
             self.__r_down = r_down_std
@@ -97,10 +89,10 @@ class Resistor_Divider():
 
     def print_divider_info(self) -> None:
 
-        print(f"Upper resistor: {self.__r_up}")
-        print(f"Lower resistor: {self.__r_down}")
-        print(f"Divider current: {self.__div_current}")
-        print(f"Output voltage: {self.__out_voltage}")
+        print(f"Upper resistor: {self.__r_up} Ohm")
+        print(f"Lower resistor: {self.__r_down} Ohm")
+        print(f"Divider current: {self.__div_current} A")
+        print(f"Output voltage: {self.__out_voltage} V")
     
     def __init__(self,
                  *,
@@ -125,10 +117,10 @@ class Resistor_Divider():
 
 if __name__ == "__main__":
 
-    resistor_divider = Resistor_Divider(input_voltage = 5.0,
-                                        output_voltage = 0.8,
+    resistor_divider = Resistor_Divider(input_voltage = 12,
+                                        output_voltage = 3,
                                         resistors_tolerance = 1,
-                                        divider_current = 0.000085)
+                                        divider_current = 0.00017)
     
     print(resistor_divider)
     
