@@ -22,7 +22,7 @@ Python Resistor Divider Calculator (PRDC) calculate the standard resistors value
 - 2 % -> E48
 - 1 % -> E96
 
-The program iteratively search for the resistors pair that minimizes the error on the output voltage with the constraint that the sum of the two resistors do not drain more current than specified.
+The program iteratively searches for the resistors pair that minimizes the error on the output voltage with the constraint that the sum of the two resistors do not drain more current than specified.
 
 It was made as an exercise to learn Python's OOP programming.
 
