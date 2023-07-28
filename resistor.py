@@ -14,6 +14,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>"""
 
 import numpy as np
+import math
 
 class Resistor():
 
@@ -85,11 +86,7 @@ class Resistor():
         else:
             decimals = 2
 
-        exp = 0
-        res = r_value
-        while (res >= 10.0):
-            res /= 10
-            exp += 1
+        exp = math.floor(math.log10(r_value))
         
         r_low = 1 * (10 ** decimals)
         r_value_adj = r_value * (10 ** (decimals - exp))
